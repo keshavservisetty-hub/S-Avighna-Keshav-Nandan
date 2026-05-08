@@ -9,6 +9,7 @@ This repository serves as the digital code appendix for the mechanical engineeri
 This repository contains three primary MATLAB scripts corresponding to the phases of the simulation:
 
 1. passive_quarter_car_script
+```
 % Quarter Car Suspension Parameters
 m = 350;    % Mass (kg)
 c = 18000;  % Spring Stiffness (N/m) 
@@ -49,10 +50,12 @@ road_velocity = timeseries(z_vel, t);
 
 %% CONFIRMATION MESSAGE
 fprintf('SUCCESS: Sedan loaded with %d consecutive bumps.\n', num_bumps);
+```
 
 The main initialization script for the baseline passive suspension system. It defines the Quarter-Car parameters (sprung mass, fixed stiffness, fixed damping) and generates the time-series data for a three-bump road profile.
 
 2. semiactive_script
+```
 % Quarter Car Parameters (Realistic Sedan)
 m = 350;          % Sprung mass (kg)
 c = 18000;        % Spring stiffness (N/m) (Swapped 'c' to 'k')
@@ -89,10 +92,12 @@ road_position = timeseries(z_dist, t);
 road_velocity = timeseries(z_vel, t);
 
 fprintf('Success! Semi-active sedan loaded with 3 consecutive bumps.\n');
+```
 
 The initialization script for the modified semi-active system. It defines the identical baseline parameters and road profile to ensure parity in testing, while establishing the minimum and maximum damping boundaries for the controller.
 
 3. gain_scheduler_script
+```
 function [Kp, Ki, Kd] = gain_scheduler(rel_vel)
     
     
@@ -118,7 +123,8 @@ function [Kp, Ki, Kd] = gain_scheduler(rel_vel)
         Ki = 0;
         Kd = 1200;
     end
- within the Simulink closed-loop architecture. This function continuously evaluates the relative velocity of the suspension and outputs dynamically scheduled PID gains across three distinct operational modes: Impact, Rebound, and Cruising.
+```
+This function continuously evaluates the relative velocity of the suspension and outputs dynamically scheduled PID gains across three distinct operational modes: Impact, Rebound, and Cruising.
 
 ## Usage Notes
 These scripts are designed to initialize the MATLAB Workspace variables (`road_position`, `road_velocity`, etc.) prior to executing the corresponding `.slx` Simulink block diagrams discussed in the main report.
