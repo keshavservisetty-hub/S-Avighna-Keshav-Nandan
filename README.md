@@ -1,4 +1,3 @@
-# S-Avighna-Keshav-Nandan
 # Quarter-Car Suspension Dynamics: Passive vs. Semi-Active
 
 ## Overview
